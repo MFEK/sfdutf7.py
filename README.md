@@ -5,6 +5,19 @@ FontForge's Spline Font Databases have a rather unusual encoding called
 word *or* the IMAP meaning. It is instead its own encoding unrelated to either,
 which I have implemented for use in `sfdnormalize` and other projects.
 
+## Tests / source of truth
+
+The ultimate source of truth for this library is the implementation as it
+appears in [FontForge](https://github.com/fontforge/fontforge)'s `sfd.c` of
+[`SFDDumpUTF7Str`](https://github.com/fontforge/fontforge/blob/18225116959807bcf0276ff07f69a19b0dddfe52/fontforge/sfd.c#L207)
+and
+[`SFDReadUTF7Str`](https://github.com/fontforge/fontforge/blob/18225116959807bcf0276ff07f69a19b0dddfe52/fontforge/sfd.c#L413).
+
+The function `utf7toutf8_copy` has some involvment as well. There is no spec,
+if this library results in a string FontForge can decode transparently (not the
+same thing as "exactly the same string FontForge itself would produce"!) my
+implementation is right; if it doesn't then it's not, please open a bug! :-)
+
 ## License
 
 Copyright (c) 2014–2022
