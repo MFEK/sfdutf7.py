@@ -12,12 +12,14 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/ctrlcctrlv/sfdutf7.py",
-    entry_points = {'console_scripts': ['sfdutf7 = sfdutf7.__main__:main'],},
+    entry_points={
+        "console_scripts": ["sfdutf7 = sfdutf7.__main__:main"],
+    },
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires=">=3.6",
 )
