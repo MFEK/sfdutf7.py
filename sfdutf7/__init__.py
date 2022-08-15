@@ -17,7 +17,7 @@
 # IMAPClient¹: Menno Finlay-Smits (@mjs), Carson Ip (GitHub @carsonip), Mathieu
 #              Agopian (@magopian), John Villalovos (@JohnVillalovos)
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
 #     * Redistributions of source code must retain the above copyright
@@ -28,7 +28,7 @@
 #     * Neither the name of Menno Smits nor the names of its
 #       contributors may be used to endorse or promote products derived
 #       from this software without specific prior written permission.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 # ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 # WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -87,7 +87,7 @@ def encode(s: str, quote=False) -> bytes:
             consume_b64_buffer(b64_buffer)
             # Special case: + is used as shift character so we need to escape
             # it in ASCII
-            if o == PLUS_ORD: # 0x2B = +
+            if o == PLUS_ORD:  # 0x2B = +
                 res.extend(b"+-")
             else:
                 res.append(o)
@@ -107,6 +107,7 @@ def encode(s: str, quote=False) -> bytes:
         res.append(QUOT_ORD)
 
     return bytes(res)
+
 
 def decode(s: bytes, unquote=False, force_valid_xml=False) -> str:
     if unquote and len(s) >= 2 and s[0] == QUOT_ORD and s[-1] == QUOT_ORD:
@@ -145,9 +146,11 @@ def decode(s: bytes, unquote=False, force_valid_xml=False) -> str:
 
     return "".join(res)
 
+
 def _base64_utf7_encode(buffer: str) -> bytes:
     s = "".join(buffer).encode("utf-16be")
     return binascii.b2a_base64(s, newline=False)
+
 
 def _base64_utf7_decode(s: bytes) -> str:
     s = bytearray(s)

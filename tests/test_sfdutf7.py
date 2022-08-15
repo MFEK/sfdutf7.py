@@ -1,6 +1,15 @@
 import ctypes
 import ctypes.util
-from ctypes import POINTER, Structure, py_object, pythonapi, c_void_p, c_int, c_char_p, pointer
+from ctypes import (
+    POINTER,
+    Structure,
+    py_object,
+    pythonapi,
+    c_void_p,
+    c_int,
+    c_char_p,
+    pointer,
+)
 import logging
 import os
 
@@ -9,8 +18,10 @@ import sfdutf7
 libc = ctypes.cdll.LoadLibrary(ctypes.util.find_library("c"))
 libfontforge = ctypes.cdll.LoadLibrary(ctypes.util.find_library("fontforge"))
 
+
 class FILE(Structure):
     pass
+
 
 fdopen = libc.fdopen
 fdopen.restype = POINTER(FILE)
@@ -65,6 +76,7 @@ def test_decode():
         encoded = libfontforge_sfdutf7encode(to_encode)[1:-1]
         decoded = sfdutf7.decode(encoded)
         assert to_encode == decoded
+
 
 def test_encode():
     for to_encode in test_strings:
