@@ -47,6 +47,8 @@
 import binascii
 import string
 
+from . import xmlvalid
+
 PLUS_ORD = ord(b'+')
 DASH_ORD = ord(b'-')
 CAP_A_ORD = ord(b'A')
@@ -106,8 +108,8 @@ def encode(s: str, quote=False) -> bytes:
 
     return bytes(res)
 
-def decode(s: bytes, quote=False) -> str:
-    if quote and len(s) >= 2 and s[0] == QUOT_ORD and s[-1] == QUOT_ORD:
+def decode(s: bytes, unquote=False, force_valid_xml=False) -> str:
+    if unquote and len(s) >= 2 and s[0] == QUOT_ORD and s[-1] == QUOT_ORD:
         s = s[1:-1]
 
     res = []
@@ -137,6 +139,9 @@ def decode(s: bytes, quote=False) -> str:
     # Decode the remaining buffer, if any
     if b64_buffer:
         res.append(_base64_utf7_decode(b64_buffer[1:]))
+
+    if force_valid_xml:
+        res = xmlvalid.force_text(res)
 
     return "".join(res)
 
