@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="sfdutf7",
-    version="0.0.1",
+    version="0.1.0",
     author="Fredrick Brennan",
     author_email="copypaste@kittens.ph",
     description="SFDUTF7 encoding parsing library",
