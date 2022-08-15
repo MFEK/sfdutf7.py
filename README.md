@@ -1,5 +1,7 @@
 # SFDUTF7 encoder/decoder library
 
+[![PyPI version](https://badge.fury.io/py/sfdutf7.svg)](https://badge.fury.io/py/sfdutf7)
+
 FontForge's Spline Font Databases have a rather unusual encoding called
 "UTF-7", but which is incompatible with *either* the common meaning of this
 word *or* the IMAP meaning. It is instead its own encoding unrelated to either,
